@@ -1,4 +1,4 @@
-/* global fieldProperties, setAnswer, goToNextField */
+/* global fieldProperties, setAnswer, goToNextField, setMetaData */
 
 var choices = fieldProperties.CHOICES
 var appearance = fieldProperties.APPEARANCE
@@ -15,19 +15,10 @@ var likertContainer = document.querySelector('#likert-container') // likert
 var choiceLabelContainer = document.querySelector('#choice-labels')
 var listNoLabelContainer = document.querySelector('#list-nolabel')
 
-var allLinkElements = document.querySelector('a')
+var allLinkElements = document.getElementsByTagName('a')
 
 var numLinks = allLinkElements.length
 var clickTracker = {}
-
-for (var a = 0; a < numLinks; a++) {
-  var linkElement = allLinkElements[a]
-  var linkUrl = linkElement.href
-  clickTracker[linkUrl] = false
-  linkElement.onclick = function () {
-    this.linkUrl
-  }
-}
 
 var labelOrLnl
 
@@ -49,6 +40,23 @@ if (!labelOrLnl) {
   }
   if (fieldProperties.HINT) {
     hintContainer.innerHTML = unEntity(fieldProperties.HINT)
+  }
+}
+
+// Needs to be here, will only work after un-untity
+for (var a = 0; a < numLinks; a++) {
+  var linkElement = allLinkElements[a]
+  var linkUrl = linkElement.href
+  clickTracker[linkUrl] = 0
+  allLinkElements[a].onclick = function () {
+    console.log('Clicked!')
+    console.log(this)
+    var clickedUrl = this.href
+    console.log(clickedUrl)
+    clickTracker[clickedUrl] += 1
+    var allMetaData = Object.keys(clickTracker).map(url => url + ' ' + clickTracker[url]).join('|')
+    console.log(allMetaData)
+    setMetaData(allMetaData)
   }
 }
 

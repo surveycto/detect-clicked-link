@@ -49,16 +49,12 @@ for (var a = 0; a < numLinks; a++) {
   var linkUrl = linkElement.href
   clickTracker[linkUrl] = 0
   allLinkElements[a].onclick = function () {
-    console.log('Clicked!')
-    console.log(this)
     var clickedUrl = this.href
-    console.log(clickedUrl)
     clickTracker[clickedUrl] += 1
-    var allMetaData = Object.keys(clickTracker).map(url => url + ' ' + clickTracker[url]).join('|')
-    console.log(allMetaData)
-    setMetaData(allMetaData)
+    buildMetaData()
   }
 }
+buildMetaData()
 
 // Prepare the current webview, making adjustments for any appearance options
 if ((appearance.indexOf('minimal') !== -1) && (fieldType === 'select_one')) { // minimal appearance
@@ -153,6 +149,11 @@ function clearAnswer () {
     }
   }
   setAnswer('')
+}
+
+function buildMetaData () {
+  var allMetaData = Object.keys(clickTracker).map(url => url + ' ' + clickTracker[url]).join('|')
+  setMetaData(allMetaData)
 }
 
 // Removed the containers that are not to be used

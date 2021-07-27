@@ -1,4 +1,4 @@
-/* global fieldProperties, setAnswer, goToNextField, setMetaData */
+/* global fieldProperties, setAnswer, goToNextField, getMetaData, setMetaData */
 
 var choices = fieldProperties.CHOICES
 var appearance = fieldProperties.APPEARANCE
@@ -17,8 +17,7 @@ var listNoLabelContainer = document.querySelector('#list-nolabel')
 
 var allLinkElements = document.getElementsByTagName('a')
 
-var numLinks = allLinkElements.length
-var clickTracker = {}
+
 
 var labelOrLnl
 
@@ -42,19 +41,6 @@ if (!labelOrLnl) {
     hintContainer.innerHTML = unEntity(fieldProperties.HINT)
   }
 }
-
-// Needs to be here, will only work after un-untity
-for (var a = 0; a < numLinks; a++) {
-  var linkElement = allLinkElements[a]
-  var linkUrl = linkElement.href
-  clickTracker[linkUrl] = 0
-  allLinkElements[a].onclick = function () {
-    var clickedUrl = this.href
-    clickTracker[clickedUrl] += 1
-    buildMetaData()
-  }
-}
-buildMetaData()
 
 // Prepare the current webview, making adjustments for any appearance options
 if ((appearance.indexOf('minimal') !== -1) && (fieldType === 'select_one')) { // minimal appearance
@@ -131,6 +117,37 @@ if ((appearance.indexOf('minimal') !== -1) && (fieldType === 'select_one')) {
     }
   }
 }
+
+var numLinks = allLinkElements.length
+var clickTracker = {}
+var lastMetaData = getMetaData()
+
+if (lastMetaData != null) {
+  console.log(lastMetaData)
+  var mdArray = lastMetaData.split('|')
+  console.log(mdArray)
+  for (var a = 0; a < numLinks; a++) {
+    console.log(a)
+    console.log(mdArray[a])
+    var part = mdArray[a].split(' ')
+    clickTracker[part[0]] = parseInt(part[1])
+  }
+}
+
+// Needs to be here, will only work after un-untity
+for (var a = 0; a < numLinks; a++) {
+  var linkElement = allLinkElements[a]
+  var linkUrl = linkElement.href
+  if (!(linkUrl in clickTracker)) {
+    clickTracker[linkUrl] = 0
+  }
+  allLinkElements[a].onclick = function () {
+    var clickedUrl = this.href
+    clickTracker[clickedUrl] += 1
+    buildMetaData()
+  }
+}
+buildMetaData()
 
 function clearAnswer () {
   // minimal appearance

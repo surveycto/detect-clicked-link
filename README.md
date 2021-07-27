@@ -17,6 +17,7 @@ This field plug-in can be used to determine how many times each link has been cl
 ## Features
 
 * Detect the number of times a link has been clicked in a field.
+* Remembers number of times links clicked even when leaving field and coming back.
 * All of the capabilities of the [select_one-select_multiple](https://github.com/surveycto/select_one-select_multiple/blob/master/README.md) field plug-in.
 
 ### Requirements
@@ -48,7 +49,7 @@ You can use the plug-in-metadata(), item-at(), and selected() functions to retri
 1. Download the [detect-clicked-link.fieldplugin.zip](https://github.com/surveycto/detect-clicked-link/raw/master/detect-clicked-link.fieldplugin.zip) file from this repo, and attach it to the sample form on your SurveyCTO server.
 1. Upload the sample form to your server, with the media files ZIP file and the field plug-in attached.
 
-The field plug-in will automatically detect all links in the field using the &lt;a&gt; HTML tag, and it will track how many times each of those has been clicked.
+The field plug-in will automatically detect all links in the field using the `<a>` HTML tag, and it will track how many times each of those has been clicked.
 
 ### Parameters
 

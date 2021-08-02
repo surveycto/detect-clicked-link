@@ -8,7 +8,7 @@
 
 ## Description
 
-This field plug-in can be used to determine how many times each link has been clicked.
+This field plug-in can be used to determine how many times each link has been clicked. You can use this to make sure the enumerator has clicked on all needed links before moving on in the form.
 
 [![Download now](extras/readme-images/beta-release-download.jpeg)](https://github.com/surveycto/detect-clicked-link/raw/master/detect-clicked-link.fieldplugin.zip)
 

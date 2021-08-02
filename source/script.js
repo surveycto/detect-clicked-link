@@ -15,10 +15,6 @@ var likertContainer = document.querySelector('#likert-container') // likert
 var choiceLabelContainer = document.querySelector('#choice-labels')
 var listNoLabelContainer = document.querySelector('#list-nolabel')
 
-var allLinkElements = document.getElementsByTagName('a')
-
-
-
 var labelOrLnl
 
 if (appearance.indexOf('label') === -1) {
@@ -118,23 +114,24 @@ if ((appearance.indexOf('minimal') !== -1) && (fieldType === 'select_one')) {
   }
 }
 
-var numLinks = allLinkElements.length
-var clickTracker = {}
+// START link analysis
+
+var allLinkElements = document.getElementsByTagName('a') // All <a> tags, which are analyzed later after everything has been set up, such as unneeded containers being removed
+var numLinks = allLinkElements.length // Number of links
+var clickTracker = {} // Will be an object tracking number of times each URL has been opened.
 var lastMetaData = getMetaData()
 
-if (lastMetaData != null) {
-  console.log(lastMetaData)
+if (lastMetaData != null) { // If there were previously clicked links, this gets that data, and puts it into "clickTracker"
   var mdArray = lastMetaData.split('|')
   console.log(mdArray)
   for (var a = 0; a < numLinks; a++) {
-    console.log(a)
-    console.log(mdArray[a])
     var part = mdArray[a].split(' ')
     clickTracker[part[0]] = parseInt(part[1])
   }
 }
 
-// Needs to be here, will only work after un-untity
+// Needs to be here, will only work after un-entity
+// Go through each link, and add a listener to add 1 to the number of clicks so far when clicked, tracked in "clickTracker"
 for (var a = 0; a < numLinks; a++) {
   var linkElement = allLinkElements[a]
   var linkUrl = linkElement.href
@@ -147,7 +144,7 @@ for (var a = 0; a < numLinks; a++) {
     buildMetaData()
   }
 }
-buildMetaData()
+buildMetaData() // Run here to save metadata in case there is none yet, so not blank if no links are clicked yet
 
 function clearAnswer () {
   // minimal appearance
@@ -168,6 +165,7 @@ function clearAnswer () {
   setAnswer('')
 }
 
+// Re-build metadata whenever a link is clicked
 function buildMetaData () {
   var allMetaData = Object.keys(clickTracker).map(url => url + ' ' + clickTracker[url]).join('|')
   setMetaData(allMetaData)

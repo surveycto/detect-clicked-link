@@ -1,21 +1,18 @@
 # Detect clicked link
 
-<img src="extras/readme-images/text_box_revealed.png" width="300px">
-
-|<img src="extras/readme-images/blank_box.png" width="100px">|<img src="extras/readme-images/main_choice.png" width="100px">|
-|:---:|:---:|
-|Waiting for text||Main choice selected|
+<img src="extras/readme-images/example.png" width="300px">
 
 ## Description
 
 This field plug-in can be used to determine how many times each link has been clicked. You can use this to make sure the enumerator has clicked on all needed links before moving on in the form.
 
-[![Download now](extras/readme-images/beta-release-download.jpeg)](https://github.com/surveycto/detect-clicked-link/raw/master/detect-clicked-link.fieldplugin.zip)
+[![Download now](extras/readme-images/beta-release-download.jpeg)](https://github.com/surveycto/detect-clicked-link/raw/main/detect-clicked-link.fieldplugin.zip)
 
 *This plug-in is currently under beta. If you you find a problem with the field plug-in, please email support@surveycto.com, or submit an issue to this GitHub repo.*
 
 ## Features
 
+* Automatically detect each link in the form by searching for the [`<a>` HTML tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
 * Detect the number of times a link has been clicked in a field.
 * Remembers number of times links clicked even when leaving field and coming back.
 * All of the capabilities of the [select_one-select_multiple](https://github.com/surveycto/select_one-select_multiple/blob/master/README.md) field plug-in.
@@ -45,17 +42,15 @@ You can use the plug-in-metadata(), item-at(), and selected() functions to retri
 
 *To use this plug-in as is:*
 
-1. Download the [sample form](https://github.com/surveycto/detect-clicked-link/raw/master/extras/sample-form/Other%20choice%20sample%20form.xlsx) from this repo, as well as the [media files ZIP file](https://github.com/surveycto/detect-clicked-link/raw/master/extras/sample-form/media.zip). You can use the sample form as-is, or adjust the parameters to change the behavior ([see below](#parameters)).
-1. Download the [detect-clicked-link.fieldplugin.zip](https://github.com/surveycto/detect-clicked-link/raw/master/detect-clicked-link.fieldplugin.zip) file from this repo, and attach it to the sample form on your SurveyCTO server.
-1. Upload the sample form to your server, with the media files ZIP file and the field plug-in attached.
+1. Download the [sample form](https://github.com/surveycto/detect-clicked-link/raw/main/extras/sample-form/Detect%20clicked%20link%20sample%20form.xlsx) from this repo.
+1. Download the [detect-clicked-link.fieldplugin.zip](hhttps://github.com/surveycto/detect-clicked-link/raw/main/detect-clicked-link.fieldplugin.zip) file from this repo.
+1. Upload the sample form to your server, with the field plug-in attached.
 
 The field plug-in will automatically detect all links in the field using the `<a>` HTML tag, and it will track how many times each of those has been clicked.
 
 ### Parameters
 
-|Name|Description|
-|:--|:--|
-|||
+This field plug-in has no parameters.
 
 ## Default SurveyCTO feature support
 

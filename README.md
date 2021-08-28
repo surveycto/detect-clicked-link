@@ -2,6 +2,10 @@
 
 <img src="extras/readme-images/example.png" width="300px">
 
+|<img src="extras/readme-images/web_form.png" width="100px">|<img src="extras/readme-images/results.png" width="100px">|
+|:---:|:---:|
+|Web form|Example results|
+
 ## Description
 
 This field plug-in can be used to determine how many times each link has been clicked. You can use this to make sure the enumerator has clicked on all needed links before moving on in the form.

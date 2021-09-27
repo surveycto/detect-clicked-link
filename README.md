@@ -47,7 +47,7 @@ You can use the plug-in-metadata(), item-at(), and selected() functions to retri
 *To use this plug-in as is:*
 
 1. Download the [sample form](https://github.com/surveycto/detect-clicked-link/raw/main/extras/sample-form/Detect%20clicked%20link%20sample%20form.xlsx) from this repo.
-1. Download the [detect-clicked-link.fieldplugin.zip](hhttps://github.com/surveycto/detect-clicked-link/raw/main/detect-clicked-link.fieldplugin.zip) file from this repo.
+1. Download the [detect-clicked-link.fieldplugin.zip](https://github.com/surveycto/detect-clicked-link/raw/main/detect-clicked-link.fieldplugin.zip) file from this repo.
 1. Upload the sample form to your server, with the field plug-in attached.
 
 The field plug-in will automatically detect all links in the field using the `<a>` HTML tag, and it will track how many times each of those has been clicked.
